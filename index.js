@@ -85,7 +85,9 @@ const getWeatherByGeoLocation = async () => {
     tempDisplay.innerHTML = Math.round(data.list[0].main.temp) + "&deg;C";
     humidityDisplay.innerHTML = data.list[0].main.humidity + "%";
     windDisplay.innerHTML = data.list[0].wind.speed + "m/s";
+    input.value = ""
   };
+
 
   // Function to update weather icon based on temperature
   const updateWeatherIcon = (temp) => {

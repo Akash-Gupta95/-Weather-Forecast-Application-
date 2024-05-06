@@ -24,6 +24,11 @@ body {
 }
 
 /* Styles for the search input field */
+.search{
+
+ 
+}
+
 .search input {
   border: 0;
   outline: 0;
@@ -43,14 +48,14 @@ body {
   width: 60px;
   height: 60px;
   cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+
 }
 
 /* Styles for the search button icon */
 .search button img {
   width: 26px;
+  position:relative;
+  left: 15px;
 }
 
 /* Styles for the weather icon */

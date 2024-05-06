@@ -9,11 +9,11 @@
   <script src="https://kit.fontawesome.com/6e5f910418.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <section class="Main-Container mx-auto sm:px-32 md:px-40 lg:px-80 mt-10">
+  <section class="Main-Container mx-auto  sm:px-32 md:px-40 lg:px-80 mt-10">
     <div class="card px-4">
       <h1 class="text-center pb-8 text-4xl font-semibold">Weather Forecast</h1>
-      <div class="search grid grid-cols-4 gap-6">
-        <input
+      <div class="search grid grid-cols-3 gap-4 ">
+        <input 
           type="text"
           class="grid-cols-4 col-span-2 input-city"
           placeholder="Enter City Name"
@@ -22,14 +22,14 @@
         <div id="dropdownMenu" class="dropdown-menu">
           <!-- Recent searches will be dynamically added here -->
         </div>
-        <div class="searchBox flex items-center gap-8">
-          <button class="Search-Btn"><img src="/images/search.png" alt="Search" /></button>
+        <div class="searchBox flex items-center  gap-2">
+          <button class="Search-Btn "><img src="/images/search.png" alt="Search" /></button>
           <i class="fas fa-location-arrow location text-5xl"></i>
         </div>
       </div>
 
       <div class="weather grid grid-cols-1 mx-6 mt-5 sm:px-2 md:px-22">
-        <h6 class="date"></h6>
+        <h3 class="date mt-5"></h3>
         <div class="imgDiv columns-1">         
           <img src="/images/summer.png" alt="Weather Icon" class="weather-icon" />
         </div>
