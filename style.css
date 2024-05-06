@@ -1,0 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #222;
+}
+
+.card {
+  background: linear-gradient(135deg, #00feba, #5b548a);
+  color: #fff;
+  border-radius: 20px;
+  padding: 40px 35px;
+}
+
+.search input {
+  border: 0;
+  outline: 0;
+  background: #ebfffc;
+  color: #555;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-size: 18px;
+}
+
+.search button {
+  border: 0;
+  outline: 0;
+  background: #ebfffc;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.search button img {
+  width: 26px;
+}
+
+.weather-icon {
+  width: 160px;
+    margin-bottom: 2rem;
+}
+
+.weather h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  position: relative;
+  bottom: 20px;
+}
+
+.weather h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  position: relative;
+  bottom: 20px;
+}
+
+.details{
+    
+    
+}
+
+.col img{
+    width: 40px;
+    margin-right: 10px;
+}
+.col-Humidity img , .col-wind img{
+    position: relative;
+    left: 110px;
+    top: 15px;
+}
+
+
+.Humidity ,.wind{
+    font-size: 1rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+.history-Card{
+    margin-top: 2rem;
+}
+
+.H-Card{
+    background-color: lightGrey;
+    color: black;
+    text-align: left;
+    text-shadow: 5px 15px 35px black;
+}
+
+/* TRial
+ */
+
+ .dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 300px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  z-index: 1;
+  margin-top: 4rem;
+  border-radius: 15px;
+  cursor: pointer;
+
+}
+.dropdown-menu div:hover {
+  background-color: white;
+  color: black;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+
+
+@media (max-width:720px){
+    
+    .col-Humidity img , .col-wind img{
+        position: relative;
+        left: 5px;
+        top: 15px;
+    }
+
+}  
+
+
+@media (min-width: 550px) and (max-width: 1370px) {
+    .col-Humidity img , .col-wind img{
+        left: 5px;
+    }
+}

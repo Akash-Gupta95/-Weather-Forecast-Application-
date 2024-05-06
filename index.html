@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Weather Forecast Application </title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <section class="Main-Container mx-auto sm:px-32 md:px-40 lg:px-80 mt-10">
+      <div class="card px-4">
+        <h1 class="text-center pb-8 text-4xl font-semibold">Weather Forecast</h1>
+        <div class="search grid grid-cols-4 gap-6">
+
+          <input
+            type="text"
+            class="grid-cols-4 col-span-3"
+            placeholder="Enter city Name"
+            spellcheck="false"
+          />
+          <div id="dropdownMenu" class="dropdown-menu">
+            <!-- Recent searches will be dynamically added here -->
+          </div>
+          <button class="Search-Btn"><img src="/images/search.png" /></button>
+        </div>
+
+
+        <div class="weather grid grid-cols-1 mx-6 mt-5 sm:px-2 md:px-22">
+          <div class="imgDiv columns-1">
+            <img src="/images/summe.png" alt="" class="weather-icon" />
+          </div>
+
+          <div class="col columns-2 justify-between gap-12">
+            <div class="col">
+              <h1 class="temp">&deg; C</h1>
+              <h2 class="city"></h2>
+            </div>
+            <div class="details">
+              <div class="col-Humidity grid grid-cols-2">
+                <img src="/images/humidity.png" alt="" />
+                <div class=" ">
+                  <p class="Humidity">------</p>
+                  <p>Humidity</p>
+                </div>
+              </div>
+
+              <div class="col-wind grid grid-cols-2 mt-5">
+                <img src="/images/wind.png" alt="" />
+                <div class="">
+                  <p class="wind">-----</p>
+                  <p>Wind Speed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Cards for Previose day History -->
+        <div class="col history-Card gap-6 grid-cols-5 flex">
+          <div class="max-w-sm H-Card rounded overflow-hidden shadow-lg">
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">Date</div>
+            </div>
+
+            <img
+              class="w-full"
+              src="/img/card-top.jpg"
+              alt="Sunset in the mountains"
+            />
+            <div class="px-6 pt-4 pb-2">
+              <div class="col">Temp: 5.67 C</div>
+              <div class="col">Wind 2.77 M/S</div>
+              <div class="col">HUmidity: 76%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="/index.js"></script>
+  </body>
+</html>
