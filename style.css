@@ -1,3 +1,4 @@
+/* Styles for the entire page */
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +10,7 @@ body {
   background-color: #222;
 }
 
+/* Styles for the main card container */
 .card {
   background: linear-gradient(135deg, #00feba, #5b548a);
   color: #fff;
@@ -16,6 +18,12 @@ body {
   padding: 40px 35px;
 }
 
+/* Styles for the location button */
+.location {
+  cursor: pointer;
+}
+
+/* Styles for the search input field */
 .search input {
   border: 0;
   outline: 0;
@@ -26,6 +34,7 @@ body {
   font-size: 18px;
 }
 
+/* Styles for the search button */
 .search button {
   border: 0;
   outline: 0;
@@ -39,15 +48,18 @@ body {
   display: flex;
 }
 
+/* Styles for the search button icon */
 .search button img {
   width: 26px;
 }
 
+/* Styles for the weather icon */
 .weather-icon {
   width: 160px;
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
+/* Styles for the temperature and city name */
 .weather h1 {
   font-size: 4rem;
   font-weight: 500;
@@ -62,42 +74,37 @@ body {
   bottom: 20px;
 }
 
-.details{
-    
-    
+
+/* Styles for the weather detail icons */
+.col img {
+  width: 40px;
+  margin-right: 10px;
 }
 
-.col img{
-    width: 40px;
-    margin-right: 10px;
-}
-.col-Humidity img , .col-wind img{
-    position: relative;
-    left: 110px;
-    top: 15px;
+/* Styles for humidity and wind speed */
+.Humidity,
+.wind {
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
-
-.Humidity ,.wind{
-    font-size: 1rem;
-    font-weight: 600;
-    font-size: 1.3rem;
-}
-.history-Card{
-    margin-top: 2rem;
+/* Styles for the history card container */
+.history-Card {
+  margin-top: 2rem;
 }
 
-.H-Card{
-    background-color: lightGrey;
-    color: black;
-    text-align: left;
-    text-shadow: 5px 15px 35px black;
+/* Styles for each historical weather card */
+.H-Card {
+  background-color: lightGrey;
+  color: black;
+  text-align: left;
+  text-shadow: 5px 15px 35px black;
+
+ 
 }
 
-/* TRial
- */
-
- .dropdown-menu {
+/* Styles for the dropdown menu */
+.dropdown-menu {
   display: none;
   position: absolute;
   background-color: black;
@@ -108,32 +115,33 @@ body {
   margin-top: 4rem;
   border-radius: 15px;
   cursor: pointer;
-
 }
+
+/* Styles for dropdown menu items on hover */
 .dropdown-menu div:hover {
   background-color: white;
   color: black;
 }
 
+/* Show dropdown menu */
 .dropdown-menu.show {
   display: block;
 }
 
+/* Media query for smaller screens */
+@media (max-width: 720px) {
+  .col-Humidity img,
+  .col-wind img {
+    position: relative;
+    left: 5px;
+    top: 15px;
+  }
+}
 
-
-@media (max-width:720px){
-    
-    .col-Humidity img , .col-wind img{
-        position: relative;
-        left: 5px;
-        top: 15px;
-    }
-
-}  
-
-
+/* Media query for medium-sized screens */
 @media (min-width: 550px) and (max-width: 1370px) {
-    .col-Humidity img , .col-wind img{
-        left: 5px;
-    }
+  .col-Humidity img,
+  .col-wind img {
+    left: 5px;
+  }
 }
