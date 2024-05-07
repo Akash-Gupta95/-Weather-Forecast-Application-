@@ -27,6 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       const data = await response.json();
 
+      if(data.cod == 404){
+        cityDisplay.innerHTML = "<h4>city not found</h4>";
+        return;
+        }
+        
       // Update UI with current weather information
       updateCurrentWeatherUI(data);
 
@@ -94,6 +99,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to update UI with current weather information
   const updateCurrentWeatherUI = (data) => {
+
+ 
+
     cityDisplay.innerHTML = data.city.name;
     dateDisplay.innerHTML = new Date(
       data.list[0].dt * 1000
@@ -198,12 +206,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // Event listener for search button click
   search.addEventListener("click", () => {
     const cityName = input.value.trim();
+
     if (cityName !== "") {
       getWeather(cityName);
       input.value = "";
     }
 
-    
+
   });
 
   // Event listener for location button click
