@@ -22,7 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to fetch weather data for a city
   const getWeather = async (cityName) => {
     try {
-      const response = await fetch(`${URL}?q=${cityName}&appid=${apiKey}&units=${units}`);
+      const response = await fetch(
+        `${URL}?q=${cityName}&appid=${apiKey}&units=${units}`
+      );
       const data = await response.json();
 
       // Update UI with current weather information
@@ -30,15 +32,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Update weather icon based on temperature
       updateWeatherIcon(data.list[0].main.temp);
-      
+
       // Save city to recent searches
       saveToRecentSearches(cityName);
-      
-      let fiveDayList = [data.list[8],data.list[16],data.list[24], data.list[32], data.list[38], data.list[39] ];
+
+      let fiveDayList = [
+        data.list[8],
+        data.list[16],
+        data.list[24],
+        data.list[32],
+        data.list[38],
+        data.list[39],
+      ];
       showHistoryData(fiveDayList);
       // Show history data in UI
-    
-
     } catch (error) {
       console.error("Error fetching weather data:", error);
       cityDisplay.innerHTML = "Server Error";
@@ -46,48 +53,56 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Function to fetch weather data based on geolocation
- // Function to fetch weather data based on geolocation
-const getWeatherByGeoLocation = async () => {
-  try {
-    locationLoadingMsg.style.display = "block";
-    const position = await new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
-  
-    const response = await fetch(`${URL}?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`);
-    const data = await response.json();
-  
-    // Update UI with current weather information
-    updateCurrentWeatherUI(data);
-  
-    // Update weather icon based on temperature
-    updateWeatherIcon(data.list[0].main.temp);
-    
-    // Show history data in UI
-    let fiveDayList = [data.list[8],data.list[16],data.list[24], data.list[32], data.list[38], data.list[39] ];
-    showHistoryData(fiveDayList);
-    
-    // Hide loading message
-    locationLoadingMsg.style.display = "none";
-  } catch (error) {
-    console.error("Error fetching weather data by geolocation:", error);
-    locationErrorMsg.style.display = "block";
-    // Hide loading message on error
-    locationLoadingMsg.style.display = "none";
-  }
-};
+  const getWeatherByGeoLocation = async () => {
+    try {
+      locationLoadingMsg.style.display = "block";
+      const position = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      });
 
+      const response = await fetch(
+        `${URL}?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`
+      );
+      const data = await response.json();
+
+      // Update UI with current weather information
+      updateCurrentWeatherUI(data);
+
+      // Update weather icon based on temperature
+      updateWeatherIcon(data.list[0].main.temp);
+
+      // Show history data in UI
+      let fiveDayList = [
+        data.list[8],
+        data.list[16],
+        data.list[24],
+        data.list[32],
+        data.list[38],
+        data.list[39],
+      ];
+      showHistoryData(fiveDayList);
+
+      // Hide loading message
+      locationLoadingMsg.style.display = "none";
+    } catch (error) {
+      console.error("Error fetching weather data by geolocation:", error);
+      locationErrorMsg.style.display = "block";
+      // Hide loading message on error
+      locationLoadingMsg.style.display = "none";
+    }
+  };
 
   // Function to update UI with current weather information
   const updateCurrentWeatherUI = (data) => {
     cityDisplay.innerHTML = data.city.name;
-    dateDisplay.innerHTML = new Date(data.list[0].dt * 1000).toLocaleDateString();
+    dateDisplay.innerHTML = new Date(
+      data.list[0].dt * 1000
+    ).toLocaleDateString();
     tempDisplay.innerHTML = Math.round(data.list[0].main.temp) + "&deg;C";
     humidityDisplay.innerHTML = data.list[0].main.humidity + "%";
     windDisplay.innerHTML = data.list[0].wind.speed + "m/s";
-    input.value = ""
+    input.value = "";
   };
-
 
   // Function to update weather icon based on temperature
   const updateWeatherIcon = (temp) => {
@@ -120,13 +135,15 @@ const getWeatherByGeoLocation = async () => {
   };
 
   // Function to display history data in UI
-const showHistoryData = (weatherData) => {
-  historyCard.innerHTML = weatherData
-    .map((data) => {
-      return `
+  const showHistoryData = (weatherData) => {
+    historyCard.innerHTML = weatherData
+      .map((data) => {
+        return `
         <div class="grid gap-4 H-Card rounded overflow-hidden  shadow-lg ">
           <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2 text-sm ">${new Date(data.dt * 1000).toLocaleDateString()}</div>
+            <div class="font-bold text-xl mb-2 text-sm ">${new Date(
+              data.dt * 1000
+            ).toLocaleDateString()}</div>
           </div>
           <img
             class=" w-24"
@@ -140,10 +157,9 @@ const showHistoryData = (weatherData) => {
           </div>
         </div>
       `;
-    })
-    .join(" ");
-};
-
+      })
+      .join(" ");
+  };
 
   // Function to render recent searches in dropdown menu
   const renderRecentSearches = (recentSearches) => {
@@ -163,6 +179,11 @@ const showHistoryData = (weatherData) => {
 
   // Event listener for input field focus
   input.addEventListener("focus", () => {
+    // Checking if recent search isEmpty
+    if (!JSON.parse(localStorage.getItem("Cities"))) {
+      dropdownMenu.classList.add("hide");
+      return;
+    }
     dropdownMenu.classList.add("show");
     renderRecentSearches(JSON.parse(localStorage.getItem("Cities")) || []);
   });
@@ -174,7 +195,6 @@ const showHistoryData = (weatherData) => {
     }, 400);
   });
 
-
   // Event listener for search button click
   search.addEventListener("click", () => {
     const cityName = input.value.trim();
@@ -182,6 +202,8 @@ const showHistoryData = (weatherData) => {
       getWeather(cityName);
       input.value = "";
     }
+
+    
   });
 
   // Event listener for location button click
